@@ -12,9 +12,11 @@
 forward index와 반대로 키워드(Term)를 통해 해당 키워드가 포함된 문서 목록에 접근하는 방식의 자료구조다. 보통 hash table 기반으로 구현되기 때문에 Documents List를 O(1)만에 얻을 수 있다. (만약 inverted index를 쓰지 않는다면 모든 문서의 내용을 탐색해야한다.) 따라서 Term이 포함된 문서를 자주 찾아야하는 경우에 유용하다.
 
 * posting list
+
 Term을 포함하는 문서의 Id 목록을 Posting List라고도 부른다.
 
 * inverted index의 trade-off
+
 Term 검색은 빨라지지만, 데이터를 추가/수정할 때 Term 추출 및 정규화, Postings 갱신등의 연산을 해야하므로 쓰기 성능이 일부 희생된다.
 
 ---
@@ -51,7 +53,7 @@ v3에서는 위의 문제를 해결하기 위해 series id list를 정렬 상태
 
 ### 메모리에서의 index
 
-Head에서 관리하는 chunks(mmap chunks + active chunks)의 index는 메모리에서 관리한다. Head block은 시간이 지나 persistent block이 되면서 메모리에서 잘리게 되는데, 이 때 index도 같이 디스크에 저장된다. 이후 Head에 더 이상 존재하지 않게되는 series에 대한 index는 메모리에서 삭제된다.
+Head에서 관리하는 chunks(mmap chunks + active chunks)의 index는 메모리에서 관리한다. Head block은 시간이 지나 persistent block이 되는데, 이 때 index도 같이 디스크에 저장된다. 이후 Head에 더 이상 존재하지 않게되는 series에 대한 index는 메모리에서 삭제된다.
 
 ---
 ## 코드 분석
@@ -71,6 +73,7 @@ type MemPostings struct {
 }
 ```
 * `m map[string]map[string][]storage.SeriesRef`
+
 m은 postings의 전체적인 정보를 담는 맵이다. key는 label name, value는 또 다른 map이다. 여기서 value에 해당하는 map은 key가 label value, value가 SeriesRef을 담는 슬라이스(id 목록 배열)다.
 ```
 # m 예시
@@ -94,6 +97,7 @@ m은 postings의 전체적인 정보를 담는 맵이다. key는 label name, val
 }
 ```
 * `lvs map[string][]string`
+
 lvs는 label name을 key, label value들을 담은 배열을 value로 가지는 map이다.
 
 ```
@@ -106,6 +110,7 @@ lvs는 label name을 key, label value들을 담은 배열을 value로 가지는 
 }
 ```
 * `ordered bool`
+
 ordered는 정렬 상태를 나타내는 boolean이다. (정렬 상태면 True)
 
 ### postings를 갱신 하는 함수 `Add`
