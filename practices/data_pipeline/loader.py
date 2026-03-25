@@ -1,6 +1,6 @@
 
 # 역할: /incoming 파일을 가져다 검증 후 /done 또는 /error로 이동
-#       처리 결과를 app.log에 기록 → exporter가 이 로그를 tail함
+#       처리 결과를 app.log에 기록 → exporter가 이 로그를 tail한다.
 import os, time, shutil, struct, logging, json, datetime
 
 logging.basicConfig(filename='/data/logs/app.log', level=logging.INFO,
