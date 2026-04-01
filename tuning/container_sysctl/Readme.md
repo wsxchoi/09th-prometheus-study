@@ -98,7 +98,7 @@ container_oom_events_total : OOM 킬 감지
 
 ![img_4.png](img/img_4.png) 
 
-현재 swap 메모리 사용량 : 대략 65M
+현재 swap 메모리 사용량 : 대략 65M(swap 최대 820)
 
 ![img_5.png](img/img_5.png)
 
@@ -212,6 +212,11 @@ overcommit_ratio 파라미터를 110 으로 설정하여서 committed_as(address
 처음에 overcommit_ratio 파라미터가 기존에는 50이었고, commitlimit 가 committed_as 보다 낮은 상태에서
 확인도 안하고 overcommit=2 를 키자마자 서버가 마비되어버렸다.. 만약 이를 영구 설정으로 해놨었다면 꼼짝없이 복구모드에 들어가야 했을 것이다.
 의도치 않았지만 memmorycommit 의 중요성을 체감하였다.
+
+```azure
+왜 마비가 되었을까?
+기존에 실행 중이던 프로세스들도 새 메모리 할당에 실패하기 시작하고, 시스템 데몬들까지 영향받아 마비되는 것이다.
+```
 
 ![img_24.png](img/img_24.png)
 
