@@ -221,7 +221,7 @@ x="y2" -> offset 240
 필요한 postings에 빠르게 접근할 수 있다.
 
 ---
-# 3. Compaction 이후 왜 이런 구조가 필요한가
+# 3. Why This Structure Is Needed After Compaction
 
 Head의 앞부분이 persistent block으로 내려가는 순간,
 해당 시간 구간의 데이터는 더 이상 수정되지 않는 immutable 데이터가 된다.
