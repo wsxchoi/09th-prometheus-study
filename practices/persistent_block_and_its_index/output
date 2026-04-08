@@ -1,0 +1,215 @@
+
+╔══════════════════════════════════════════════════════════╗
+║  Prometheus TSDB Index Parser                           ║
+╚══════════════════════════════════════════════════════════╝
+
+  file:  ./01KNM05CN6BS2C9YWSSXDGCCFS/index
+  size:  268,312 bytes (262.0 KiB)
+
+============================================================
+ 0. META.JSON
+============================================================
+
+  ULID:         01KNM05CN6BS2C9YWSSXDGCCFS
+  minTime:      1775565600436
+  maxTime:      1775566200000
+  numSeries:    2,169
+  numChunks:    10,900
+  numSamples:   1,301,400
+  compaction:   level=1, sources=['01KNM05CN6BS2C9YWSSXDGCCFS']
+
+  time range: 2026-04-07T12:40:00.436000+00:00 ~ 2026-04-07T12:50:00+00:00
+  duration:   0.2 hours
+
+============================================================
+ 1. HEADER (magic + version)
+============================================================
+
+  magic number:  0xBAAAD700  (expected 0xBAAA_D700) ✓ OK
+  version:       2
+
+============================================================
+ 2. TOC (Table Of Contents) — last 52 bytes
+============================================================
+
+  TOC starts at byte offset: 268260 (0x417E4)
+
+  symbols                        → offset            5  (0x5)
+  series                         → offset        24961  (0x6181)
+  label_indices_start            → offset       174252  (0x2A8AC)
+  label_offset_table             → offset       231080  (0x386A8)
+  postings_start                 → offset       174252  (0x2A8AC)
+  postings_offset_table          → offset       231080  (0x386A8)
+
+  CRC32: 0x38A18EB6
+
+============================================================
+ 3. SYMBOL TABLE
+============================================================
+
+  section length:  24948 bytes
+  # symbols:      1063
+
+  ── first 30 symbols (of 1063) ──
+    [    0] ""
+    [    1] "#1 SMP Tue Nov  4 21:21:47 UTC 2025"
+    [    2] "(none)"
+    [    3] "+Inf"
+    [    4] "/"
+    [    5] "/-/healthy"
+    [    6] "/-/quit"
+    [    7] "/-/ready"
+    [    8] "/-/reload"
+    [    9] "/alertmanager-discovery"
+    [   10] "/alerts"
+    [   11] "/api/v1/*path"
+    [   12] "/api/v1/admin/tsdb/clean_tombstones"
+    [   13] "/api/v1/admin/tsdb/delete_series"
+    [   14] "/api/v1/admin/tsdb/snapshot"
+    [   15] "/api/v1/alertmanagers"
+    [   16] "/api/v1/alerts"
+    [   17] "/api/v1/features"
+    [   18] "/api/v1/format_query"
+    [   19] "/api/v1/label/:name/values"
+    [   20] "/api/v1/labels"
+    [   21] "/api/v1/metadata"
+    [   22] "/api/v1/notifications"
+    [   23] "/api/v1/notifications/live"
+    [   24] "/api/v1/openapi.yaml"
+    [   25] "/api/v1/otlp/v1/metrics"
+    [   26] "/api/v1/parse_query"
+    [   27] "/api/v1/query"
+    [   28] "/api/v1/query_exemplars"
+    [   29] "/api/v1/query_range"
+    ... (1033 more symbols)
+
+============================================================
+ 4. SERIES (first 5 entries)
+============================================================
+
+  Series ID 1561  (offset 24976)
+    labels (3): {__name__="go_gc_cleanups_executed_cleanups_total", instance="localhost:9090", job="prometheus"}
+    chunks: 5
+    chunk[0]: mint=1775565600436, maxt=1775565719437, ref=0x8
+
+  Series ID 1565  (offset 25040)
+    labels (3): {__name__="go_gc_cleanups_queued_cleanups_total", instance="localhost:9090", job="prometheus"}
+    chunks: 5
+    chunk[0]: mint=1775565600436, maxt=1775565719437, ref=0x50C
+
+  Series ID 1569  (offset 25104)
+    labels (3): {__name__="go_gc_cycles_automatic_gc_cycles_total", instance="localhost:9090", job="prometheus"}
+    chunks: 5
+    chunk[0]: mint=1775565600436, maxt=1775565719437, ref=0xA10
+
+  Series ID 1573  (offset 25168)
+    labels (3): {__name__="go_gc_cycles_forced_gc_cycles_total", instance="localhost:9090", job="prometheus"}
+    chunks: 5
+    chunk[0]: mint=1775565600436, maxt=1775565719437, ref=0xF2B
+
+  Series ID 1577  (offset 25232)
+    labels (3): {__name__="go_gc_cycles_total_gc_cycles_total", instance="localhost:9090", job="prometheus"}
+    chunks: 5
+    chunk[0]: mint=1775565600436, maxt=1775565719437, ref=0x142F
+
+
+============================================================
+ 5. POSTINGS OFFSET TABLE (inverted index directory)
+============================================================
+
+  section length:  37172 bytes
+  # entries:      1036
+
+  ── first 20 entries (of 1036) ──
+                      label name  label value                     postings offset
+  ------------------------------  ------------------------------  ---------------
+                                                                           174252
+                        __name__  go_gc_cleanups_executed_c...             182940
+                        __name__  go_gc_cleanups_queued_cle...             182956
+                        __name__  go_gc_cycles_automatic_gc...             182972
+                        __name__  go_gc_cycles_forced_gc_cy...             182988
+                        __name__  go_gc_cycles_total_gc_cyc...             183004
+                        __name__  go_gc_duration_seconds                   183020
+                        __name__  go_gc_duration_seconds_count             183072
+                        __name__  go_gc_duration_seconds_sum               183092
+                        __name__  go_gc_finalizers_executed...             183112
+                        __name__  go_gc_finalizers_queued_f...             183128
+                        __name__  go_gc_gogc_percent                       183144
+                        __name__  go_gc_gomemlimit_bytes                   183164
+                        __name__  go_gc_heap_allocs_by_size...             183184
+                        __name__  go_gc_heap_allocs_by_size...             183244
+                        __name__  go_gc_heap_allocs_by_size...             183260
+                        __name__  go_gc_heap_allocs_bytes_t...             183276
+                        __name__  go_gc_heap_allocs_objects...             183292
+                        __name__  go_gc_heap_frees_by_size_...             183308
+                        __name__  go_gc_heap_frees_by_size_...             183368
+  ... (1016 more entries)
+
+============================================================
+ 6. POSTINGS DEEP DIVE — label pair → series IDs → series
+============================================================
+
+  ▶ Postings for __name__="go_gc_cleanups_executed_cleanups_total"  (offset 182940)
+    # series in this postings list: 1
+    series IDs: [1561]
+      → series 1561: {__name__="go_gc_cleanups_executed_cleanups_total", instance="localhost:9090", job="prometheus"}
+
+
+  ▶ Postings for __name__="go_gc_cleanups_queued_cleanups_total"  (offset 182956)
+    # series in this postings list: 1
+    series IDs: [1565]
+      → series 1565: {__name__="go_gc_cleanups_queued_cleanups_total", instance="localhost:9090", job="prometheus"}
+
+
+  ▶ Postings for __name__="go_gc_cycles_automatic_gc_cycles_total"  (offset 182972)
+    # series in this postings list: 1
+    series IDs: [1569]
+      → series 1569: {__name__="go_gc_cycles_automatic_gc_cycles_total", instance="localhost:9090", job="prometheus"}
+
+
+  ▶ Postings for instance="localhost:9090"  (offset 206256)
+    # series in this postings list: 771
+    series IDs: [1561, 1565, 1569, 1573, 1577, 1581, 1585, 1589, 1593, 1597, 1621, 1629, 1638, 1642, 1646, 1654, 1662, 1666, 1670, 1674 ... (+751 more)]
+      → series 1561: {__name__="go_gc_cleanups_executed_cleanups_total", instance="localhost:9090", job="prometheus"}
+      → series 1565: {__name__="go_gc_cleanups_queued_cleanups_total", instance="localhost:9090", job="prometheus"}
+
+
+  ▶ Postings for instance="node-exporter:9100"  (offset 209352)
+    # series in this postings list: 1398
+    series IDs: [1601, 1605, 1609, 1613, 1617, 1625, 1633, 1650, 1658, 1874, 1882, 1890, 1898, 1906, 1914, 1922, 1930, 1938, 1946, 1954 ... (+1378 more)]
+      → series 1601: {__name__="go_gc_duration_seconds", instance="node-exporter:9100", job="node-exporter", quantile="0.0"}
+      → series 1605: {__name__="go_gc_duration_seconds", instance="node-exporter:9100", job="node-exporter", quantile="0.25"}
+
+
+============================================================
+ BONUS: CHUNK FILE HEADER
+============================================================
+
+  file:          ./01KNM05CN6BS2C9YWSSXDGCCFS/chunks/000001
+  magic number:  0x85BD40DD  (expected 0x85BD40DD) ✓ OK
+  version:       1
+  padding:       000000
+  file size:     3,251,313 bytes (3.10 MiB)
+
+============================================================
+ BONUS: TOMBSTONES
+============================================================
+
+  magic:    0x0130BA30  (expected 0x0130BA30) ✓ OK
+  version:  1
+  size:     9 bytes
+  (no tombstone entries)
+
+============================================================
+ SUMMARY
+============================================================
+
+  index 파일 구조 (byte offset 순서):
+  ┌─ 0x00000000  Header (magic=0xBAAAD700 + version)
+  ├─ 0x00000005  Symbol Table (1063 symbols)
+  ├─ 0x00006181  Series
+  ├─ 0x0002A8AC  Label Indices (deprecated, not read)
+  ├─ 0x0002A8AC  Postings
+  ├─ 0x000386A8  Label Offset Table (deprecated)
+  ├─ 0x000386A8  Postings Offset Table
+  └─ 0x000417E4  TOC (last 52 bytes)
